@@ -1,0 +1,29 @@
+[ 
+  {   "profile-pic":"",
+      "id_no": 3411,
+      "first_name": "Omollo",
+      "last_name": "Jopondo",
+      "stage_name": "Jones",
+      "sex": "Male",
+      "date_of_birth": "1990-05-21",
+      "email": "omollojopondo@gmail.com",
+      "genre": "Rap",
+      "records_sold": 40000,
+      "active": true
+    },
+    {  "profile-pic":"",
+      "id_no": 3111,
+      "first_name": "Stella",
+      "last_name": "Mwangi",
+      "stage_name": "STL",
+      "sex": "Female",
+      "date_of_birth": "1990-05-21",
+      "email": "stl@gmail.com",
+      "genre": "Rap",
+      "records_sold": 40900,
+      "active": true
+    }
+
+    
+    
+]
