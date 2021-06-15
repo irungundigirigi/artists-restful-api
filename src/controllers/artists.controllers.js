@@ -82,13 +82,5 @@ router.delete("/api/artists/:id",async(req,res) => {
 
     }
 });
-
-
-
-
-
-
-
-
 module.exports = router;
 
