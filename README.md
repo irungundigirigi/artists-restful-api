@@ -3,7 +3,7 @@
 
 ## Installation
 ### Clone the repository, install node packages and verify routes locally.
-#### 1. git clone 
+#### 1. git clone https://github.com/irungundigirigi/artists-restful-api.git
 #### 2. cd artists-api
 #### 3. npm install
 #### 4. npm start
@@ -20,11 +20,3 @@ Create an artist        | POST  | /api/artists
 Update an artist        | PUT   | /api/artists/id
 Delete an artist        | DELETE| /api/artists/:id
 
-
-
-
-
-
-
-
-https://artists-restful-api.herokuapp.com/api/artists
