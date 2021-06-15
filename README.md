@@ -8,7 +8,8 @@
 #### 3. npm install
 #### 4. npm start
 
-#### ALTERNATIVELY, you can verify the routes directly on Heroku: https://artists-restful-api.herokuapp.com/api/artists 
+#### ALTERNATIVELY, you can verify the routes directly on Heroku:
+#### https://artists-restful-api.herokuapp.com
 ## Testing
 #### You can test the routes using your favourite tool eg postman or thunderclient for vs code
 
