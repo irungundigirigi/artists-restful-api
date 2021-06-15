@@ -1,6 +1,5 @@
 ## **Sample-node-api**
 #### This is a RESTful API built in Node.js and runs CRUD operations on static JSON data.
-artists.json o  the defined routes.
 
 ## Installation
 ### Clone the repository, install node packages and verify routes locally.
