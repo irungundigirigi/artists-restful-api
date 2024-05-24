@@ -1,8 +1,8 @@
 {
   "name": "artists-api",
   "version": "1.0.0",
-  "description": "A simple restful API in node ",
-  "main": "index.js",
+  "description": "Artists API ",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
