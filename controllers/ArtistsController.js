@@ -2,7 +2,7 @@ const artists = require('../model/artists.json');
 
 class ArtistsController {
 
-    static async getArtists (req, res) {
+    static async getArtists(req, res) {
         try {
             res.json(artists);   
 
@@ -12,7 +12,7 @@ class ArtistsController {
 
     };
 
-    static async getArtist (req, res) {
+    static async getArtist(req, res) {
         try {
             user = await artists.find( artist => artist.id_no == req.params.id)
             res.json(artists[artists.indexOf(user)]);   
@@ -21,6 +21,65 @@ class ArtistsController {
             console.error(err.message);
         }
     };
+
+    static async addArtist(req,res) {
+        try{
+            const data= req.body
+            const user =  await artists.find( artist => artist.id_no === req.body.id_no)
+    
+            if(user){
+                res.json({
+                    "error": "User already exist"
+                })
+            }else{
+                artists.push(data)
+                res.json(
+                    {"message": "Artist created!"}
+                )
+            }
+        }catch(err){
+            console.error(err.message);
+    
+        }
+    }
+    
+
+    static async updateArtist(req,res) {
+        try{
+            user = await artists.find( artist => artist.id_no == req.params.id)
+    
+            if(user){
+                artists[artists.indexOf(user)] = req.body
+            res.json(artists)
+            }else{
+                res.json({message:"user does not exist"})
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+            
+        }catch(err){
+            console.error(err.message);
+    
+        }
+    };
+
+    static async deleteArtist(req,res) {
+        try{
+            user = await artists.find( artist => artist.id_no == req.params.id)
+            
+            if(user){
+                artists.splice(artists.indexOf(user),1) 
+            
+            res.json(artists)
+            }else{
+                res.json({message:"user does not exist"})
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+            
+        }catch(err){
+            console.error(err.message);
+    
+        }
+    };
+
+    
 };
 
 module.exports = ArtistsController;
