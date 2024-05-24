@@ -15,9 +15,12 @@ class ArtistsController {
     static async getArtist(req, res) {
         try {
             const user = await artists.find( artist => artist.id_no == req.params.id);
-            
+            if (user) {
             //res.json(artists[artists.indexOf(user)]);   
-            res.json(user);
+                res.json(user);
+            } else {
+                res.status(404).json({error:"Artist can not be found"});
+            };
 
         } catch (err) {
             console.error(err.message);
