@@ -51,7 +51,7 @@ class ArtistsController {
 
     static async updateArtist(req,res) {
         try{
-            user = await artists.find( artist => artist.id_no == req.params.id)
+            const user = await artists.find( artist => artist.id_no == req.params.id)
     
             if(user){
                 artists[artists.indexOf(user)] = req.body
@@ -68,7 +68,7 @@ class ArtistsController {
 
     static async deleteArtist(req,res) {
         try{
-            user = await artists.find( artist => artist.id_no == req.params.id)
+            const user = await artists.find( artist => artist.id_no == req.params.id)
             
             if(user){
                 artists.splice(artists.indexOf(user),1) 
