@@ -1,7 +1,7 @@
 const artists = require('../model/artists.json');
 
 class ArtistsController {
-
+    // get all artists
     static async getArtists(req, res) {
         try {
             res.json(artists);   
@@ -11,7 +11,7 @@ class ArtistsController {
         }
 
     };
-
+    // get an artist by id
     static async getArtist(req, res) {
         try {
             const user = await artists.find( artist => artist.id_no == req.params.id);
@@ -26,7 +26,7 @@ class ArtistsController {
             console.error(err.message);
         }
     };
-
+    //create a new artist
     static async addArtist(req,res) {
         try{
             const data= req.body
@@ -48,7 +48,7 @@ class ArtistsController {
         }
     }
     
-
+    // update an existing artist
     static async updateArtist(req,res) {
         try{
             const user = await artists.find( artist => artist.id_no == req.params.id)
@@ -65,7 +65,7 @@ class ArtistsController {
     
         }
     };
-
+    // delete an artist
     static async deleteArtist(req,res) {
         try{
             const user = await artists.find( artist => artist.id_no == req.params.id)
