@@ -12,8 +12,11 @@ This API provides endpoints to manage musicians, albums, and tracks. It allows y
 
 ## Endpoints
 
+### API Metrics
+`GET /api/v1/status`: Retrieve the status of the API.
+
+
 ### Artist Routes
-- `GET /api/v1/status`: Retrieve the status of the API.
 - `GET /api/v1/artists/:id`: Retrieve information about a specific artist by ID.
 - `GET /api/v1/artists`: Retrieve a list of all artists.
 - `POST /api/v1/artists`: Add a new artist to the system.
