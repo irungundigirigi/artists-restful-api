@@ -1,10 +1,10 @@
 const dbClient = require("../model/db").client;
 
-class ArtistsController {
-    // get all artists
-    static async getArtists(req, res) {
+class TrackController {
+    // get all tracks
+    static async getTracks(req, res) {
         try {
-            const query = 'SELECT * FROM artists';
+            const query = 'SELECT * FROM track';
             const { rows } = await dbClient.query(query);
             res.json(rows);   
 
@@ -14,15 +14,15 @@ class ArtistsController {
         }
     };
 
-    // get an artist by id
-    static async getArtist(req, res) {
+    // get a track by id
+    static async getTrack(req, res) {
         try {
-            const query = 'SELECT * FROM artists WHERE id_no = $1';
+            const query = 'SELECT * FROM track WHERE track_id = $1';
             const { rows } = await dbClient.query(query, [req.params.id]);
             if (rows.length > 0) {
                 res.json(rows[0]);
             } else {
-                res.status(404).json({ error: "Artist not found" });
+                res.status(404).json({ error: "Track not found" });
             }
 
         } catch (err) {
@@ -31,14 +31,14 @@ class ArtistsController {
         }
     };
 
-    // create a new artist
-    static async addArtist(req, res) {
+    // create a new track
+    static async addTrack(req, res) {
         try {
             const data = req.body;
-            const query = 'INSERT INTO artists (profile_pic, id_no, first_name, last_name, stage_name, sex, date_of_birth, email, genre, records_sold, active) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)';
-            const values = [data.profile_pic, data.id_no, data.first_name, data.last_name, data.stage_name, data.sex, data.date_of_birth, data.email, data.genre, data.records_sold, data.active];
+            const query = 'INSERT INTO track (album_id, track_title, song_source) VALUES ($1, $2, $3)';
+            const values = [data.album_id, data.track_title, data.song_source];
             await dbClient.query(query, values);
-            res.json({ message: "Artist created!" });
+            res.json({ message: "Track created!" });
 
         } catch (err) {
             console.error(err.message);
@@ -46,14 +46,14 @@ class ArtistsController {
         }
     };
 
-    // update an existing artist
-    static async updateArtist(req, res) {
+    // update an existing track
+    static async updateTrack(req, res) {
         try {
             const data = req.body;
-            const query = 'UPDATE artists SET profile_pic = $1, first_name = $2, last_name = $3, stage_name = $4, sex = $5, date_of_birth = $6, email = $7, genre = $8, records_sold = $9, active = $10 WHERE id_no = $11';
-            const values = [data.profile_pic, data.first_name, data.last_name, data.stage_name, data.sex, data.date_of_birth, data.email, data.genre, data.records_sold, data.active, req.params.id];
+            const query = 'UPDATE track SET album_id = $1, track_title = $2, song_source = $3 WHERE track_id = $4';
+            const values = [data.album_id, data.track_title, data.song_source, req.params.id];
             await dbClient.query(query, values);
-            res.json({ message: "Artist updated!" });
+            res.json({ message: "Track updated!" });
 
         } catch (err) {
             console.error(err.message);
@@ -61,12 +61,12 @@ class ArtistsController {
         }
     };
 
-    // delete an artist
-    static async deleteArtist(req, res) {
+    // delete a track
+    static async deleteTrack(req, res) {
         try {
-            const query = 'DELETE FROM artists WHERE id_no = $1';
+            const query = 'DELETE FROM track WHERE track_id = $1';
             await dbClient.query(query, [req.params.id]);
-            res.json({ message: "Artist deleted!" });
+            res.json({ message: "Track deleted!" });
 
         } catch (err) {
             console.error(err.message);
@@ -80,8 +80,8 @@ class ArtistsController {
             const query = `
                 SELECT t.* 
                 FROM tracks t
-                JOIN discography d ON t.album_id = d.album_id
-                WHERE d.artist_id = $1
+                JOIN discography a ON t.album_id = a.album_id
+                WHERE a.artist_id = $1
             `;
             const { rows } = await dbClient.query(query, [artistId]);
             res.json(rows);
@@ -90,6 +90,8 @@ class ArtistsController {
             res.status(500).json({ error: 'Internal server error' });
         }
     };
+
+    
 };
 
-module.exports = ArtistsController;
+module.exports = TrackController;
